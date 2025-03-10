@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  images: {
+    // 임시 사진 서버 설정
+    remotePatterns: [
+      { protocol: 'https', hostname: 'picsum.photos', pathname: '/**' },
+    ],
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
