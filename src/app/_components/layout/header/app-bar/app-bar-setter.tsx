@@ -6,6 +6,7 @@ import { useAppBarStore } from './use-app-bar-store';
 
 interface AppBarSetterProps {
   title: string;
+  hasBackURL?: boolean;
   hasBackground?: boolean;
   action?: ReactNode;
 }
@@ -13,6 +14,7 @@ interface AppBarSetterProps {
 export default function AppBarSetter({
   title,
   hasBackground = true,
+  hasBackURL = true,
   action,
 }: AppBarSetterProps) {
   const { setAppBar } = useAppBarStore();
@@ -21,6 +23,7 @@ export default function AppBarSetter({
     setAppBar({
       title,
       hasBackground,
+      hasBackURL,
       action,
       hasAppBar: true,
     });
@@ -30,10 +33,11 @@ export default function AppBarSetter({
         hasAppBar: false,
         title: '',
         hasBackground: true,
+        hasBackURL: true,
         action: null,
       });
     };
-  }, [setAppBar, title, hasBackground, action]);
+  }, [setAppBar, title, hasBackground, action, hasBackURL]);
 
   return null;
 }

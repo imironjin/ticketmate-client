@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <>
-      <AppBarSetter title="신청내역" />
+      <AppBarSetter title="신청내역" hasBackURL={false} />
 
       <div className={styles.container}>
         <div className={styles.button_container}>

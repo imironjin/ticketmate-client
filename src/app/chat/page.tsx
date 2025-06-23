@@ -41,7 +41,7 @@ export default function ChatPage() {
 
   return (
     <>
-      <AppBarSetter title="채팅" />
+      <AppBarSetter title="채팅" hasBackURL={false} />
 
       <div className={styles.container}>
         <div className={styles.button_container}>

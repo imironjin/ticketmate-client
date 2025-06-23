@@ -13,6 +13,7 @@ const cn = classNames.bind(styles);
 
 interface AppBarProps {
   title: string;
+  hasBackURL?: boolean;
   backURL?: string;
   action?: ReactNode;
   hasBackground?: boolean;
@@ -20,6 +21,7 @@ interface AppBarProps {
 
 const AppBar = ({
   title,
+  hasBackURL = true,
   backURL,
   action,
   hasBackground = true,
@@ -43,18 +45,24 @@ const AppBar = ({
       )}
     >
       <div className={cn(styles.left_container)}>
-        <button
-          className={styles.back_button}
-          onClick={handleBack}
-          aria-label="뒤로가기"
-        >
-          <LeftArrowIcon
-            width={16}
-            height={16}
-            fill={hasBackground ? `var(--textColor-main)` : `var(--white)`}
-          />
-          {title && <span className={styles.title}>{title}</span>}
-        </button>
+        {hasBackURL ? (
+          <button
+            className={styles.back_button}
+            onClick={handleBack}
+            aria-label="뒤로가기"
+          >
+            <LeftArrowIcon
+              width={16}
+              height={16}
+              fill={hasBackground ? `var(--textColor-main)` : `var(--white)`}
+            />
+            {title && <span className={styles.title}>{title}</span>}
+          </button>
+        ) : (
+          <div className={styles.back_button}>
+            <span className={styles.title}>{title}</span>
+          </div>
+        )}
       </div>
 
       <div className={cn(styles.right_container)}>{action}</div>
